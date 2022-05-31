@@ -1,0 +1,24 @@
+import random
+from Algorithm import Algorithm
+
+
+class RandomSearch:
+
+    @staticmethod
+    def find_distances(starting_distances: dict, shelves_distances: dict, number_of_iterations: int) -> None:
+        random_traces = {}
+        for i in range(number_of_iterations):
+            current_trace = ['start']
+            while len(current_trace) != len(shelves_distances)+1:
+                next_shelf = random.choice(list(shelves_distances))
+                if next_shelf not in current_trace:
+                    current_trace.append(next_shelf)
+            random_traces[i] = current_trace
+
+        distances = Algorithm.calculate_distances(random_traces, starting_distances, shelves_distances)
+        best_distance = min(distances, key=distances.get)
+        print("####################################################")
+        print(f"Best trace: {random_traces[best_distance]}")
+        print(f"Length: {distances[best_distance]}")
+        print("####################################################")
+
