@@ -7,8 +7,9 @@ from RandomSearch import RandomSearch
 
 # starting point of warehouse worker
 starting_point = [16, 4]
-# position of shelves (x, y)
-shelves_coordinates = {'a': [3, 2],
+# position of shelves (x, y) for calculate the best path
+shelves_coordinates = {
+          'a': [3, 2],
           'b': [2, 6],
           'c': [8, 6],
           'd': [12, 2],
@@ -23,7 +24,7 @@ while True:
     print("1. Print distances from start point")
     print("2. Print distances from each point to other points")
     print("3. Calculate best trace using random search")
-    print("4. Calculate best trace using brute force method")
+    print("4. Calculate best trace using brute force")
     choice = input("Your choice: ")
 
     if choice == '1':
