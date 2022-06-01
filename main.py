@@ -1,4 +1,4 @@
-import random
+import datetime
 
 from BruteForce import BruteForce
 from DataGenerator import DataGenerator
@@ -13,7 +13,12 @@ shelves_coordinates = {
           'b': [2, 6],
           'c': [8, 6],
           'd': [12, 2],
-          'e': [13, 6]}
+          'e': [13, 6],
+          'f': [10, 5],
+          'g': [5, 8],
+          'h': [20,11],
+          'i': [16,8]
+}
 
 
 starting_distances = DataGenerator.calculate_starting_distances(starting_point, shelves_coordinates)
@@ -33,9 +38,15 @@ while True:
         print(shelves_distances)
     elif choice == '3':
         number_of_iterations = int(input("Enter number of iterations:"))
+        time_before_algorithm = datetime.datetime.now()
         RandomSearch.find_distances(starting_distances, shelves_distances, number_of_iterations)
+        duration = datetime.datetime.now() - time_before_algorithm
+        print(f"Algorithm duration: {duration}")
     elif choice == '4':
+        time_before_algorithm = datetime.datetime.now()
         BruteForce.find_distances(starting_distances, shelves_distances)
+        duration = datetime.datetime.now() - time_before_algorithm
+        print(f"Algorithm duration: {duration}")
     elif choice == '8':
         break
     else:
