@@ -3,6 +3,7 @@ import datetime
 from BruteForce import BruteForce
 from DataGenerator import DataGenerator
 from RandomSearch import RandomSearch
+from NearestNeighbour import NearestNeighbour
 
 
 # starting point of warehouse worker
@@ -28,8 +29,9 @@ while True:
     print("---------------------------------------------")
     print("1. Print distances from start point")
     print("2. Print distances from each point to other points")
-    print("3. Calculate best trace using random search")
-    print("4. Calculate best trace using brute force")
+    print("3. Calculate best trace using Random Search")
+    print("4. Calculate best trace using Brute Force")
+    print("5. Calculate trace using Nearest Neighbour")
     choice = input("Your choice: ")
 
     if choice == '1':
@@ -46,7 +48,11 @@ while True:
         time_before_algorithm = datetime.datetime.now()
         BruteForce.find_distances(starting_distances, shelves_distances)
         duration = datetime.datetime.now() - time_before_algorithm
-        print(duration)
+        print(f"Algorithm duration: {duration.seconds}s {duration.microseconds/1000}ms")
+    elif choice == '5':
+        time_before_algorithm = datetime.datetime.now()
+        NearestNeighbour.find_distance(starting_distances, shelves_distances)
+        duration = datetime.datetime.now() - time_before_algorithm
         print(f"Algorithm duration: {duration.seconds}s {duration.microseconds/1000}ms")
     elif choice == '8':
         break
