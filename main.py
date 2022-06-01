@@ -16,8 +16,8 @@ shelves_coordinates = {
           'e': [13, 6],
           'f': [10, 5],
           'g': [5, 8],
-          'h': [20,11],
-          'i': [16,8]
+          'h': [20, 11],
+          'i': [16, 8]
 }
 
 
@@ -41,14 +41,14 @@ while True:
         time_before_algorithm = datetime.datetime.now()
         RandomSearch.find_distances(starting_distances, shelves_distances, number_of_iterations)
         duration = datetime.datetime.now() - time_before_algorithm
-        print(f"Algorithm duration: {duration}")
+        print(f"Algorithm duration: {duration.seconds}s {duration.microseconds/1000}ms")
     elif choice == '4':
         time_before_algorithm = datetime.datetime.now()
         BruteForce.find_distances(starting_distances, shelves_distances)
         duration = datetime.datetime.now() - time_before_algorithm
-        print(f"Algorithm duration: {duration}")
+        print(duration)
+        print(f"Algorithm duration: {duration.seconds}s {duration.microseconds/1000}ms")
     elif choice == '8':
         break
     else:
         print("Invalid choice!")
-
