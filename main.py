@@ -7,20 +7,9 @@ from NearestNeighbour import NearestNeighbour
 
 
 # starting point of warehouse worker
-starting_point = [16, 4]
+starting_point = [27, 9]
 # position of shelves (x, y) for calculate the best path
-shelves_coordinates = {
-          'a': [3, 2],
-          'b': [2, 6],
-          'c': [8, 6],
-          'd': [12, 2],
-          'e': [13, 6],
-          'f': [10, 5],
-          'g': [5, 8],
-          'h': [20, 11],
-          'i': [16, 8]
-}
-
+shelves_coordinates = {}
 
 starting_distances = DataGenerator.calculate_starting_distances(starting_point, shelves_coordinates)
 shelves_distances = DataGenerator.calculate_shelves_distances(shelves_coordinates)
@@ -32,6 +21,7 @@ while True:
     print("3. Calculate best trace using Random Search")
     print("4. Calculate best trace using Brute Force")
     print("5. Calculate trace using Nearest Neighbour")
+    print("8. Choose number of shelves")
     choice = input("Your choice: ")
 
     if choice == '1':
@@ -55,6 +45,10 @@ while True:
         duration = datetime.datetime.now() - time_before_algorithm
         print(f"Algorithm duration: {duration.seconds}s {duration.microseconds/1000}ms")
     elif choice == '8':
-        break
+        choice = input("Choose: 3, 5, 15, 30 or 45 shelves?: ")
+        shelves_coordinates = DataGenerator.get_shelves_set(int(choice))
+        starting_distances = DataGenerator.calculate_starting_distances(starting_point, shelves_coordinates)
+        shelves_distances = DataGenerator.calculate_shelves_distances(shelves_coordinates)
+        print(shelves_coordinates)
     else:
         print("Invalid choice!")
