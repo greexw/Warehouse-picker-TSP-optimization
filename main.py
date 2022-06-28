@@ -4,6 +4,7 @@ from BruteForce import BruteForce
 from DataGenerator import DataGenerator
 from RandomSearch import RandomSearch
 from NearestNeighbour import NearestNeighbour
+from TabuSearch import TabuSearch
 
 
 # starting point of warehouse worker
@@ -21,7 +22,8 @@ while True:
     print("3. Calculate best trace using Random Search")
     print("4. Calculate best trace using Brute Force")
     print("5. Calculate trace using Nearest Neighbour")
-    print("8. Choose number of shelves")
+    print("6. Calculate trace using Tabu Search")
+    print("7. Choose number of shelves")
     choice = input("Your choice: ")
 
     if choice == '1':
@@ -44,7 +46,13 @@ while True:
         NearestNeighbour.find_distance(starting_distances, shelves_distances)
         duration = datetime.datetime.now() - time_before_algorithm
         print(f"Algorithm duration: {duration.seconds}s {duration.microseconds/1000}ms")
-    elif choice == '8':
+    elif choice == '6':
+        number_of_iterations = int(input("Enter number of iterations:"))
+        time_before_algorithm = datetime.datetime.now()
+        TabuSearch.find_distance(starting_distances, shelves_distances, number_of_iterations)
+        duration = datetime.datetime.now() - time_before_algorithm
+        print(f"Algorithm duration: {duration.seconds}s {duration.microseconds / 1000}ms")
+    elif choice == '7':
         choice = input("Choose: 3, 5, 15, 30 or 45 shelves?: ")
         shelves_coordinates = DataGenerator.get_shelves_set(int(choice))
         starting_distances = DataGenerator.calculate_starting_distances(starting_point, shelves_coordinates)

@@ -12,10 +12,11 @@ class BruteForce:
         # get "names" of all shelves
         for key, value in shelves_distances.items():
             all_shelves.append(key)
-
+            print("dziala1")
         # get all possible permutations of shelves
         all_traces = list(itertools.permutations(all_shelves, len(all_shelves)))
         for i in range(len(all_traces)):
+            print("dziala")
             brute_force_traces[i] = all_traces[i]
 
         # calculate distances for every trace
